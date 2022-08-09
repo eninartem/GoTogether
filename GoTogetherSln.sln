@@ -17,11 +17,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoTogether.WebApi", "GoToge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoTogether.Services.Support", "GoTogether.Services.Support\GoTogether.Services.Support.csproj", "{DFAE4134-557D-4877-91A6-12E1D14CBD14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoTogether.Services.Peoples.Application", "GoTogether.Services.Peoples.Application\GoTogether.Services.Peoples.Application.csproj", "{FF9606E8-4E31-49A1-A589-0DE0CD53B5E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoTogether.Services.Peoples.Application", "GoTogether.Services.Peoples.Application\GoTogether.Services.Peoples.Application.csproj", "{FF9606E8-4E31-49A1-A589-0DE0CD53B5E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoTogether.Services.Peoples.Domain", "GoTogether.Services.Peoples.Domain\GoTogether.Services.Peoples.Domain.csproj", "{251BE230-5266-47B5-951B-70644F6B11EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoTogether.Services.Peoples.Domain", "GoTogether.Services.Peoples.Domain\GoTogether.Services.Peoples.Domain.csproj", "{251BE230-5266-47B5-951B-70644F6B11EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoTogether.Services.Peoples.Persistance", "GoTogether.Services.Peoples.Persistance\GoTogether.Services.Peoples.Persistance.csproj", "{63E9CB44-B656-465C-A089-F114B3DB712F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoTogether.Services.Peoples.Persistance", "GoTogether.Services.Peoples.Persistance\GoTogether.Services.Peoples.Persistance.csproj", "{63E9CB44-B656-465C-A089-F114B3DB712F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IventsService", "IventsService", "{0841E74B-03A6-42A0-BBCF-11145C7906BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PeoplesService", "PeoplesService", "{520E9DD1-82AD-46BA-9165-4824CC88F6D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlacesService", "PlacesService", "{1AF1FA0D-517F-42D7-9E09-B30E1EBAD6F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportService", "SupportService", "{76E6F299-3467-46D1-A300-4B46625F96E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +80,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5732E983-308C-439E-9C6B-75A35AFA1C42} = {0841E74B-03A6-42A0-BBCF-11145C7906BC}
+		{8D87431A-5E12-4E52-81B3-0ACC4DB20BA2} = {1AF1FA0D-517F-42D7-9E09-B30E1EBAD6F4}
+		{0D548DE8-97BD-431F-A82E-47F6F0230AD1} = {520E9DD1-82AD-46BA-9165-4824CC88F6D3}
+		{DFAE4134-557D-4877-91A6-12E1D14CBD14} = {76E6F299-3467-46D1-A300-4B46625F96E8}
+		{FF9606E8-4E31-49A1-A589-0DE0CD53B5E6} = {520E9DD1-82AD-46BA-9165-4824CC88F6D3}
+		{251BE230-5266-47B5-951B-70644F6B11EC} = {520E9DD1-82AD-46BA-9165-4824CC88F6D3}
+		{63E9CB44-B656-465C-A089-F114B3DB712F} = {520E9DD1-82AD-46BA-9165-4824CC88F6D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DECA21D-3C27-45B5-BAB3-0C8AD9199330}

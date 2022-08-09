@@ -15,6 +15,8 @@ public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
 
         builder.Property(p => p.Id).IsRequired();
 
+        builder.Property(p => p.LocationId).ValueGeneratedNever();
+
         builder.Property(p => p.NickName).IsRequired().HasMaxLength(50);
 
         builder.Property(p => p.Age).IsRequired().HasMaxLength(3);
