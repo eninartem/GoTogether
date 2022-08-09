@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GoTogether.Services.Peoples.Persistance;
+namespace GoTogether.Services.Peoples.Infrastructure;
 
 public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
 {

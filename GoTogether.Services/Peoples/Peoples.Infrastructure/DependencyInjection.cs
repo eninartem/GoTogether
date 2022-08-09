@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Npgsql;
 
-namespace GoTogether.Services.Peoples.Persistance;
+namespace GoTogether.Services.Peoples.Infrastructure;
 
 public static class DependencyInjection
 {

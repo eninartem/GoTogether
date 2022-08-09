@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GoTogether.Services.Peoples.Persistance.Migrations
+namespace GoTogether.Services.Peoples.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoTogether.Services.Peoples.Domain\GoTogether.Services.Peoples.Domain.csproj" />
+    <ProjectReference Include="..\Peoples.Domain\Peoples.Domain.csproj" />
   </ItemGroup>
 
 </Project>

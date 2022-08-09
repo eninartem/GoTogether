@@ -1,4 +1,4 @@
-using GoTogether.Services.Peoples.Persistance;
+using GoTogether.Services.Peoples.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddProfilePersistance(builder.Configuration);

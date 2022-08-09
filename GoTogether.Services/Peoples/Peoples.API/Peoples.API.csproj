@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoTogether.Services.Peoples.Persistance\GoTogether.Services.Peoples.Persistance.csproj" />
+    <ProjectReference Include="..\Peoples.Infrastructure\Peoples.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

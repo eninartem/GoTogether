@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace GoTogether.Services.Peoples.Persistance;
+namespace GoTogether.Services.Peoples.Infrastructure;
 
 public class ProfileDbContext : DbContext
 {
