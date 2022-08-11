@@ -3,7 +3,7 @@
 using Peoples.Application.Contracts.Mapping;
 using Peoples.Domain;
 
-namespace Peoples.Application.CQRS.Profiles.Queries;
+namespace Peoples.Application.CQRS.Profiles.Queries.GetGtProfileDetails;
 
 public class GtProfileDetailsDto : IMapWith<GtProfile>
 {

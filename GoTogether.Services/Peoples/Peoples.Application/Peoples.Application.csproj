@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\Profiles\Commands\DeleteProfile\" />
-    <Folder Include="CQRS\Profiles\Commands\UpdateProfile\" />
+    <Folder Include="CQRS\Profiles\Commands\DeleteGtProfile\" />
+    <Folder Include="CQRS\Profiles\Queries\GetGtProfileList\" />
   </ItemGroup>
 
   <ItemGroup>
