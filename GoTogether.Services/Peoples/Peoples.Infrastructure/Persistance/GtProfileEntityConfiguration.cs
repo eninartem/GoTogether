@@ -1,19 +1,21 @@
-﻿using GoTogether.Services.Peoples.Domain;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GoTogether.Services.Peoples.Infrastructure;
+using Peoples.Domain;
 
-public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
+namespace Peoples.Infrastructure.Persistance;
+
+public class GtProfileEntityConfiguration : IEntityTypeConfiguration<GtProfile>
 {
-    public void Configure(EntityTypeBuilder<Profile> builder)
+    public void Configure(EntityTypeBuilder<GtProfile> builder)
     {
         builder.HasKey(p => p.Id);
 
         builder.HasIndex(p => p.Id).IsUnique();
 
         builder.Property(p => p.Id).IsRequired();
+
+        builder.Property(p => p.AppUserId).ValueGeneratedNever();
 
         builder.Property(p => p.LocationId).ValueGeneratedNever();
 

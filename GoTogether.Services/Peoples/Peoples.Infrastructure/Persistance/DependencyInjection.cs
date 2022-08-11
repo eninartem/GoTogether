@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using Npgsql;
 
-namespace GoTogether.Services.Peoples.Infrastructure;
+namespace Peoples.Infrastructure.Persistance;
 
 public static class DependencyInjection
 {
@@ -18,7 +19,7 @@ public static class DependencyInjection
         }
         .ConnectionString;
 
-        services.AddDbContext<ProfileDbContext>(o => o.UseNpgsql(connectionString));
+        services.AddDbContext<GtProfileDbContext>(o => o.UseNpgsql(connectionString));
 
         return services;
     }

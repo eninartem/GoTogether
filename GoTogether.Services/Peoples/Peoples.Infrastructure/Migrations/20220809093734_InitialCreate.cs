@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace GoTogether.Services.Peoples.Infrastructure.Migrations
+namespace Peoples.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {
