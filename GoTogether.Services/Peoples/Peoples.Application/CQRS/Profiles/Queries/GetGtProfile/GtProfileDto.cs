@@ -1,9 +1,7 @@
-﻿namespace Peoples.Application.CQRS.Profiles.Queries.GetGtProfileDetails;
+﻿namespace Peoples.Application.CQRS.Profiles.Queries.GetGtProfile;
 
-public class GtProfileDetailsDto : IMapWith<GtProfile>
+public class GtProfileDto : IMapWith<GtProfile>
 {
-    public Guid Id { get; set; }
-
     public string NickName { get; set; }
 
     public Guid LocationId { get; set; }
@@ -17,5 +15,5 @@ public class GtProfileDetailsDto : IMapWith<GtProfile>
     public string ImageUrl { get; set; }
 
     public void Mapping(Profile profile) =>
-        profile.CreateMap<GtProfile, GtProfileDetailsDto>();
+        profile.CreateMap<GtProfile, GtProfileDto>();
 }

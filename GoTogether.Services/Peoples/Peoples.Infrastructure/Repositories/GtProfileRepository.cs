@@ -16,11 +16,11 @@ public class GtProfileRepository : IGtProfileRepository
         return GtProfile.Id;
     }
 
-    public async Task<bool> DeleteGtProfileAsync(GtProfile profile)
+    public async Task<bool> DeleteGtProfileAsync(GtProfile profile, CancellationToken token)
     {
         _dbContext.Set<GtProfile>().Remove(profile);
 
-        return await _dbContext.SaveChangesAsync() > 0;
+        return await _dbContext.SaveChangesAsync(token) > 0;
     }
 
     public async Task<GtProfile> GetGtProfileAsync(Guid guid, CancellationToken token)
@@ -28,9 +28,11 @@ public class GtProfileRepository : IGtProfileRepository
         return await _dbContext.Set<GtProfile>().FindAsync(new object[] { guid }, token);
     }
 
-    public async Task<IEnumerable<GtProfileDetailsDto>> GetGtProfilesAsync()
+    public async Task<IEnumerable<GtProfile>> GetGtProfileListAsync(CancellationToken token)
     {
-        throw new NotImplementedException();
+        var profileList = await _dbContext.Set<GtProfile>().ToListAsync(token);
+
+        return profileList;
     }
 
     public async Task UpdateGtProfileAsync(GtProfile profile, CancellationToken token)

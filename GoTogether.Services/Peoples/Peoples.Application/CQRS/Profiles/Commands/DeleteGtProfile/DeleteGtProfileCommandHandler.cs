@@ -14,7 +14,7 @@ public class DeleteGtProfileCommandHandler : IRequestHandler<DeleteGtProfileComm
         if (profileToDelete == null)
             throw new NotFoundException(nameof(GtProfile), request.Id);
 
-        await _repository.DeleteGtProfileAsync(profileToDelete);
+        await _repository.DeleteGtProfileAsync(profileToDelete, cancellationToken);
 
         return Unit.Value;
     }

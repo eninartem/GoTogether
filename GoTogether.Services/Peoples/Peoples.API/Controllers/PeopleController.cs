@@ -1,4 +1,7 @@
-﻿namespace Peoples.API.Controllers
+﻿using Peoples.Application.CQRS.Profiles.Queries.GetGtProfile;
+using Peoples.Application.CQRS.Profiles.Queries.GetGtProfileList;
+
+namespace Peoples.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -14,13 +17,21 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetGtProfileListAsync()
         {
-            var authClient = _httpClientFactory.CreateClient();
-            var discoveryDoc = await authClient.GetDiscoveryDocumentAsync("https://localhost:5055");
+            var list = await _mediator.Send(new GetGtProfileListQuery());
 
+            return Ok(list);
+        }
 
-            return Ok("All Peoples");
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGtProfileAsync(Guid id)
+        {
+            var command = new GetGtProfileQuery() { Id = id };
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
         }
 
         [HttpPut]
