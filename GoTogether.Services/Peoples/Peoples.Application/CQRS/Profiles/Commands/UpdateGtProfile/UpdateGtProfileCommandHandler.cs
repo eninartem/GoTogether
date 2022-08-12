@@ -10,7 +10,7 @@ public class UpdateGtProfileCommandHandler : IRequestHandler<UpdateGtProfileComm
 
     public async Task<Unit> Handle(UpdateGtProfileCommand request, CancellationToken cancellationToken)
     {
-        var profileToUpdate = await _repository.GetGtProfileAsync(request.Id);
+        var profileToUpdate = await _repository.GetGtProfileAsync(request.Id, cancellationToken);
 
         if (profileToUpdate == null)
             throw new NotFoundException(nameof(GtProfile), request.Id);
@@ -22,7 +22,7 @@ public class UpdateGtProfileCommandHandler : IRequestHandler<UpdateGtProfileComm
         profileToUpdate.Age = request.Age ?? profileToUpdate.Age;
         profileToUpdate.ImageUrl = request.ImageUrl ?? profileToUpdate.ImageUrl;
 
-        await _repository.UpdateGtProfileAsync(profileToUpdate);
+        await _repository.UpdateGtProfileAsync(profileToUpdate, cancellationToken);
 
         return Unit.Value;
     }

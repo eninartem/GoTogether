@@ -21,9 +21,9 @@ public class GtProfileRepository : IGtProfileRepository
         throw new NotImplementedException();
     }
 
-    public async Task<GtProfile> GetGtProfileAsync(Guid guid)
+    public async Task<GtProfile> GetGtProfileAsync(Guid guid, CancellationToken token)
     {
-        return await _dbContext.GtProfiles.FirstOrDefaultAsync(x => x.Id == guid);
+        return await _dbContext.Set<GtProfile>().FindAsync(new object[] { guid }, token);
     }
 
     public Task<IEnumerable<GtProfileDetailsDto>> GetGtProfilesAsync()
@@ -31,10 +31,10 @@ public class GtProfileRepository : IGtProfileRepository
         throw new NotImplementedException();
     }
 
-    public async Task UpdateGtProfileAsync(GtProfile profile)
+    public async Task UpdateGtProfileAsync(GtProfile profile, CancellationToken token)
     {
         _dbContext.Entry(profile).State = EntityState.Modified;
 
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(token);
     }
 }
