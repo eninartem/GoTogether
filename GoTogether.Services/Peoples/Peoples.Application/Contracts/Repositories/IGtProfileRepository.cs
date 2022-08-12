@@ -10,5 +10,5 @@ public interface IGtProfileRepository
 
     Task UpdateGtProfileAsync(GtProfile profile, CancellationToken token);
 
-    Task<bool> DeleteGtProfileAsync(Guid id);
+    Task<bool> DeleteGtProfileAsync(GtProfile id);
 }

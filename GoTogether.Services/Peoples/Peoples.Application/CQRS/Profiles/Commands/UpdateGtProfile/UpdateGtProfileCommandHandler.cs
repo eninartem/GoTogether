@@ -15,6 +15,7 @@ public class UpdateGtProfileCommandHandler : IRequestHandler<UpdateGtProfileComm
         if (profileToUpdate == null)
             throw new NotFoundException(nameof(GtProfile), request.Id);
 
+        //TODO :: make function for null-check T entities before update
         profileToUpdate.NickName = request.NickName ?? profileToUpdate.NickName;
         profileToUpdate.LocationId = request.LocationId == Guid.Empty ? profileToUpdate.LocationId : request.LocationId;
         profileToUpdate.EMail = request.EMail ?? profileToUpdate.EMail;

@@ -1,13 +1,4 @@
-﻿using IdentityModel.Client;
-
-using MediatR;
-
-using Microsoft.AspNetCore.Mvc;
-
-using Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
-using Peoples.Application.CQRS.Profiles.Commands.UpdateGtProfile;
-
-namespace Peoples.API.Controllers
+﻿namespace Peoples.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,7 +14,7 @@ namespace Peoples.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var authClient = _httpClientFactory.CreateClient();
             var discoveryDoc = await authClient.GetDiscoveryDocumentAsync("https://localhost:5055");
@@ -33,7 +24,7 @@ namespace Peoples.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateGtProfile(UpdateGtProfileCommand profileCommand)
+        public async Task<IActionResult> UpdateGtProfileAsync(UpdateGtProfileCommand profileCommand)
         {
             await _mediator.Send(profileCommand);
 
@@ -41,11 +32,21 @@ namespace Peoples.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateGtProfile(CreateGtProfileCommand profileCommand)
+        public async Task<IActionResult> CreateGtProfileAsync(CreateGtProfileCommand profileCommand)
         {
             var result = await _mediator.Send(profileCommand);
 
             return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGtProfileAsync(Guid id)
+        {
+            var command = new DeleteGtProfileCommand() { Id = id };
+
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

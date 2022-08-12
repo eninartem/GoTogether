@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\Profiles\Commands\DeleteGtProfile\" />
     <Folder Include="CQRS\Profiles\Queries\GetGtProfileList\" />
   </ItemGroup>
 
