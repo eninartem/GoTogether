@@ -15,7 +15,7 @@ public class GtProfileRepository : IGtProfileRepository
 
     public async Task<Guid> CreateGtProfileAsync(GtProfile GtProfile, CancellationToken token)
     {
-        _dbContext.Add(GtProfile);
+        await _dbContext.AddAsync(GtProfile, token);
 
         await _dbContext.SaveChangesAsync(token);
 

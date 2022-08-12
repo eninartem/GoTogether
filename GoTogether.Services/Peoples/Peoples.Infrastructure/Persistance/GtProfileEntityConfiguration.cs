@@ -21,8 +21,10 @@ public class GtProfileEntityConfiguration : IEntityTypeConfiguration<GtProfile>
 
         builder.Property(p => p.NickName).IsRequired().HasMaxLength(50);
 
-        builder.Property(p => p.Age).IsRequired().HasMaxLength(3);
+        builder.Property(p => p.Age).HasMaxLength(3);
 
         builder.Property(p => p.About).HasMaxLength(500);
+
+        builder.Property(p => p.EMail).IsRequired().HasMaxLength(50);
     }
 }

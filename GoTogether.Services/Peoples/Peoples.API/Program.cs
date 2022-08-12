@@ -1,8 +1,12 @@
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
+using Peoples.Application;
 using Peoples.Application.Contracts.DbContext;
+using Peoples.Application.Contracts.Repositories;
 using Peoples.Application.Features;
 using Peoples.Infrastructure.Persistance;
+using Peoples.Infrastructure.Repositories;
 
 using System.Reflection;
 
@@ -21,10 +25,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         c.Audience = "PeoplesAPI";
     });
 
+builder.Services.AddScoped<IGtProfileRepository, GtProfileRepository>();
+
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 
 builder.Services.AddProfilePersistance(builder.Configuration);
+builder.Services.AddProfileApplication();
 
 var app = builder.Build();
 

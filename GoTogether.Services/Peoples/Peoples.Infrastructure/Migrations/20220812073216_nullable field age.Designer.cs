@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Peoples.Infrastructure.Persistance;
@@ -11,9 +12,10 @@ using Peoples.Infrastructure.Persistance;
 namespace Peoples.Infrastructure.Migrations
 {
     [DbContext(typeof(GtProfileDbContext))]
-    partial class ProfileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220812073216_nullable field age")]
+    partial class nullablefieldage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

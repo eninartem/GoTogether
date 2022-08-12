@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Peoples.Infrastructure.Persistance;
@@ -11,9 +12,10 @@ using Peoples.Infrastructure.Persistance;
 namespace Peoples.Infrastructure.Migrations
 {
     [DbContext(typeof(GtProfileDbContext))]
-    partial class ProfileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220812072202_nullable fields")]
+    partial class nullablefields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +35,7 @@ namespace Peoples.Infrastructure.Migrations
                         .HasColumnType("character varying(500)");
 
                     b.Property<string>("Age")
+                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("character varying(3)");
 
@@ -44,8 +47,7 @@ namespace Peoples.Infrastructure.Migrations
 
                     b.Property<string>("EMail")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");

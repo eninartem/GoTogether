@@ -1,7 +1,10 @@
 ﻿using IdentityModel.Client;
 
-using Microsoft.AspNetCore.Authorization;
+using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
+
+using Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
 
 namespace Peoples.API.Controllers
 {
@@ -10,14 +13,15 @@ namespace Peoples.API.Controllers
     public class PeopleController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IMediator _mediator;
 
-        public PeopleController(IHttpClientFactory httpClientFactory)
+        public PeopleController(IHttpClientFactory httpClientFactory, IMediator mediator)
         {
             _httpClientFactory = httpClientFactory;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var authClient = _httpClientFactory.CreateClient();
@@ -25,6 +29,14 @@ namespace Peoples.API.Controllers
 
 
             return Ok("All Peoples");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateGtProfile(CreateGtProfileCommand profileCommand)
+        {
+            var result = await _mediator.Send(profileCommand);
+
+            return Ok(result);
         }
     }
 }
