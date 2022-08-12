@@ -1,10 +1,4 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using System.Reflection;
-
-namespace Peoples.Application;
+﻿namespace Peoples.Application;
 
 public static class DependencyInjection
 {

@@ -1,12 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using Peoples.Domain;
-
-namespace Peoples.Application.Contracts.DbContext;
+﻿namespace Peoples.Application.Contracts.DbContext;
 
 public interface IGtProfileDbContext
 {
-    DbSet<GtProfile> Profiles { get; set; }
+    DbSet<GtProfile> GtProfiles { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

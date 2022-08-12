@@ -1,15 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using Peoples.Application.Contracts.DbContext;
-using Peoples.Domain;
-
-namespace Peoples.Infrastructure.Persistance;
+﻿namespace Peoples.Infrastructure.Persistance;
 
 public class GtProfileDbContext : DbContext, IGtProfileDbContext
 {
     public GtProfileDbContext(DbContextOptions<GtProfileDbContext> options) : base(options) { }
 
-    public DbSet<GtProfile> Profiles { get; set; }
+    public DbSet<GtProfile> GtProfiles { get; set; }
 
     public override Task<int> SaveChangesAsync(CancellationToken token = new CancellationToken())
     {

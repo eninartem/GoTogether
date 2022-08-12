@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
+﻿namespace Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
 
 public class CreateGtProfileCommand : IRequest<Guid>
 {

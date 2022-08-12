@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 using Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
+using Peoples.Application.CQRS.Profiles.Commands.UpdateGtProfile;
 
 namespace Peoples.API.Controllers
 {
@@ -29,6 +30,14 @@ namespace Peoples.API.Controllers
 
 
             return Ok("All Peoples");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateGtProfile(UpdateGtProfileCommand profileCommand)
+        {
+            await _mediator.Send(profileCommand);
+
+            return NoContent();
         }
 
         [HttpPost]

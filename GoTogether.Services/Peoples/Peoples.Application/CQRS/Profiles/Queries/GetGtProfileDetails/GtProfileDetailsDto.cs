@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-
-using Peoples.Application.Contracts.Mapping;
-using Peoples.Domain;
-
-namespace Peoples.Application.CQRS.Profiles.Queries.GetGtProfileDetails;
+﻿namespace Peoples.Application.CQRS.Profiles.Queries.GetGtProfileDetails;
 
 public class GtProfileDetailsDto : IMapWith<GtProfile>
 {

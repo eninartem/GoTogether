@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-using Peoples.Domain;
-
-namespace Peoples.Infrastructure.Persistance;
+﻿namespace Peoples.Infrastructure.Persistance;
 
 public class GtProfileEntityConfiguration : IEntityTypeConfiguration<GtProfile>
 {

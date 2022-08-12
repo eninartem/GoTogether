@@ -1,11 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-using Npgsql;
-
-namespace Peoples.Infrastructure.Persistance;
+﻿namespace Peoples.Infrastructure.Persistance;
 
 public static class DependencyInjection
 {

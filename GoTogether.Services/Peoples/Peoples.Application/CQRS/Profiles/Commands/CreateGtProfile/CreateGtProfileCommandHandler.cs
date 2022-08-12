@@ -1,9 +1,4 @@
-﻿using MediatR;
-
-using Peoples.Application.Contracts.Repositories;
-using Peoples.Domain;
-
-namespace Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
+﻿namespace Peoples.Application.CQRS.Profiles.Commands.CreateGtProfile;
 
 public class CreateGtProfileCommandHandler : IRequestHandler<CreateGtProfileCommand, Guid>
 {

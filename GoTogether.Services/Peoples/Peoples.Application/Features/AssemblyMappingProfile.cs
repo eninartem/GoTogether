@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-
-using Peoples.Application.Contracts.Mapping;
-
-using System.Reflection;
-
-namespace Peoples.Application.Features;
+﻿namespace Peoples.Application.Features;
 
 public class AssemblyMappingProfile : Profile
 {

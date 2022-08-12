@@ -1,10 +1,4 @@
-﻿using Peoples.Application.Contracts.Repositories;
-using Peoples.Application.CQRS.Profiles.Commands.UpdateGtProfile;
-using Peoples.Application.CQRS.Profiles.Queries.GetGtProfileDetails;
-using Peoples.Domain;
-using Peoples.Infrastructure.Persistance;
-
-namespace Peoples.Infrastructure.Repositories;
+﻿namespace Peoples.Infrastructure.Repositories;
 
 public class GtProfileRepository : IGtProfileRepository
 {
@@ -15,7 +9,7 @@ public class GtProfileRepository : IGtProfileRepository
 
     public async Task<Guid> CreateGtProfileAsync(GtProfile GtProfile, CancellationToken token)
     {
-        await _dbContext.AddAsync(GtProfile, token);
+        await _dbContext.Set<GtProfile>().AddAsync(GtProfile, token);
 
         await _dbContext.SaveChangesAsync(token);
 
@@ -27,9 +21,9 @@ public class GtProfileRepository : IGtProfileRepository
         throw new NotImplementedException();
     }
 
-    public Task<GtProfileDetailsDto> GetGtProfileAsync(Guid guid)
+    public async Task<GtProfile> GetGtProfileAsync(Guid guid)
     {
-        throw new NotImplementedException();
+        return await _dbContext.GtProfiles.FirstOrDefaultAsync(x => x.Id == guid);
     }
 
     public Task<IEnumerable<GtProfileDetailsDto>> GetGtProfilesAsync()
@@ -37,8 +31,10 @@ public class GtProfileRepository : IGtProfileRepository
         throw new NotImplementedException();
     }
 
-    public Task<GtProfileDetailsDto> UpdateGtProfileAsync(UpdateGtProfileCommand updateGtProfileCommand)
+    public async Task UpdateGtProfileAsync(GtProfile profile)
     {
-        throw new NotImplementedException();
+        _dbContext.Entry(profile).State = EntityState.Modified;
+
+        await _dbContext.SaveChangesAsync();
     }
 }

@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-namespace Peoples.Application.Contracts.Mapping;
+﻿namespace Peoples.Application.Contracts.Mapping;
 
 public interface IMapWith<T>
 {

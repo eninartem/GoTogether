@@ -1,7 +1,9 @@
 ﻿namespace Peoples.Application.CQRS.Profiles.Commands.UpdateGtProfile;
 
-public class UpdateGtProfileCommand
+public class UpdateGtProfileCommand : IRequest
 {
+    public Guid Id { get; set; }
+
     public string NickName { get; set; }
 
     public Guid LocationId { get; set; }
