@@ -1,15 +1,3 @@
-
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-using Peoples.Application;
-using Peoples.Application.Contracts.DbContext;
-using Peoples.Application.Contracts.Repositories;
-using Peoples.Application.Features;
-using Peoples.Infrastructure.Persistance;
-using Peoples.Infrastructure.Repositories;
-
-using System.Reflection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(c =>
