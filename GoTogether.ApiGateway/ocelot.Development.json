@@ -1,0 +1,20 @@
+{
+	"Routes": [
+		//Profile
+		{
+			"DownstreamPathTemplate": "/api/people",
+			"DownstreamScheme": "https",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": "5065"
+				}
+			],
+			"UpstreamPathTemplate": "/api/people",
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+		}
+	],
+	"GlobalConfiguration": {
+		"BaseUrl": "https://localhost:5050"
+	}
+}
