@@ -5,6 +5,7 @@ public class GtProfileDbContext : DbContext, IGtProfileDbContext
     public GtProfileDbContext(DbContextOptions<GtProfileDbContext> options) : base(options) { }
 
     public DbSet<GtProfile> GtProfiles { get; set; }
+    public DbSet<GtLocation> GtLocations { get; set; }
 
     public override Task<int> SaveChangesAsync(CancellationToken token = new CancellationToken())
     {
@@ -27,6 +28,7 @@ public class GtProfileDbContext : DbContext, IGtProfileDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new GtProfileEntityConfiguration());
+        builder.ApplyConfiguration(new GtLocationEntityConfiguration());
         base.OnModelCreating(builder);
     }
 }

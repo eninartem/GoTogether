@@ -6,8 +6,6 @@ public class GtProfile : BaseGtProfile
 
     public string NickName { get; set; }
 
-    public Guid LocationId { get; set; }
-
     public string EMail { get; set; }
 
     public string? About { get; set; }
@@ -16,7 +14,8 @@ public class GtProfile : BaseGtProfile
 
     public string? ImageUrl { get; set; }
 
-
+    public GtLocation Location { get; set; }
+    public Guid LocationId { get; set; }
 
     //For communicate with roles
     //[ForeignKey("ApplicationUserId")]

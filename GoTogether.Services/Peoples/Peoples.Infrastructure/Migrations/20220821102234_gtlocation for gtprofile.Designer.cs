@@ -12,8 +12,8 @@ using Peoples.Infrastructure.Persistance;
 namespace Peoples.Infrastructure.Migrations
 {
     [DbContext(typeof(GtProfileDbContext))]
-    [Migration("20220812072202_nullable fields")]
-    partial class nullablefields
+    [Migration("20220821102234_gtlocation for gtprofile")]
+    partial class gtlocationforgtprofile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,30 @@ namespace Peoples.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("GtLocations");
+                });
 
             modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
                 {
@@ -35,7 +59,6 @@ namespace Peoples.Infrastructure.Migrations
                         .HasColumnType("character varying(500)");
 
                     b.Property<string>("Age")
-                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("character varying(3)");
 
@@ -47,7 +70,8 @@ namespace Peoples.Infrastructure.Migrations
 
                     b.Property<string>("EMail")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
@@ -68,7 +92,25 @@ namespace Peoples.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique();
 
-                    b.ToTable("Profiles");
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("GtProfiles");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
+                {
+                    b.HasOne("Peoples.Domain.GtLocation", "Location")
+                        .WithMany("GtProfiles")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Navigation("GtProfiles");
                 });
 #pragma warning restore 612, 618
         }

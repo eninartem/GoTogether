@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Peoples.Infrastructure.Persistance;
@@ -12,10 +11,9 @@ using Peoples.Infrastructure.Persistance;
 namespace Peoples.Infrastructure.Migrations
 {
     [DbContext(typeof(GtProfileDbContext))]
-    [Migration("20220812110137_rename relation")]
-    partial class renamerelation
+    partial class GtProfileDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,6 +21,30 @@ namespace Peoples.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("GtLocations");
+                });
 
             modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
                 {
@@ -68,7 +90,25 @@ namespace Peoples.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique();
 
+                    b.HasIndex("LocationId");
+
                     b.ToTable("GtProfiles");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
+                {
+                    b.HasOne("Peoples.Domain.GtLocation", "Location")
+                        .WithMany("GtProfiles")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Navigation("GtProfiles");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Places.Infrastructure.Persistance;
@@ -11,9 +12,10 @@ using Places.Infrastructure.Persistance;
 namespace Places.Infrastructure.Migrations
 {
     [DbContext(typeof(GtPlaceDbContext))]
-    partial class GtPlaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220821094116_temp")]
+    partial class temp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

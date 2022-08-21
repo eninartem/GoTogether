@@ -1,4 +1,4 @@
-﻿namespace Places.Infrastructure.Persistance;
+﻿namespace Peoples.Infrastructure.Persistance;
 
 public class GtLocationEntityConfiguration : IEntityTypeConfiguration<GtLocation>
 {
@@ -12,21 +12,5 @@ public class GtLocationEntityConfiguration : IEntityTypeConfiguration<GtLocation
         builder.Property(x => x.Country).HasMaxLength(50);
 
         builder.Property(x => x.City).HasMaxLength(50);
-
-        builder.HasData(new GtLocation[]
-        {
-            new GtLocation
-            {
-                Id = Guid.NewGuid(),
-                Country = "Russia",
-                City = "Samara"
-            },
-            new GtLocation
-            {
-                Id = Guid.NewGuid(),
-                Country = "Russia",
-                City = "Togliatty"
-            }
-        });
     }
 }

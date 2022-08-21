@@ -11,7 +11,7 @@
 				}
 			],
 			"UpstreamPathTemplate": "/api/people",
-			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
 		}
 	],
 	"GlobalConfiguration": {

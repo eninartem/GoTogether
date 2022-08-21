@@ -12,8 +12,8 @@ using Peoples.Infrastructure.Persistance;
 namespace Peoples.Infrastructure.Migrations
 {
     [DbContext(typeof(GtProfileDbContext))]
-    [Migration("20220812073216_nullable field age")]
-    partial class nullablefieldage
+    [Migration("20220821101823_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,25 @@ namespace Peoples.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GtLocation");
+                });
 
             modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
                 {
@@ -68,7 +87,25 @@ namespace Peoples.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique();
 
-                    b.ToTable("Profiles");
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("GtProfiles");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtProfile", b =>
+                {
+                    b.HasOne("Peoples.Domain.GtLocation", "Location")
+                        .WithMany("GtProfiles")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("Peoples.Domain.GtLocation", b =>
+                {
+                    b.Navigation("GtProfiles");
                 });
 #pragma warning restore 612, 618
         }
